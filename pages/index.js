@@ -10,7 +10,7 @@ export default function Home() {
 
     function handleEnter(event)  {
         if (event.code == 'Enter') {
-        searchCard()
+            searchCard()
         }
     }
 
