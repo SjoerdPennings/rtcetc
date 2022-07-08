@@ -1,4 +1,3 @@
-import Layout from '../../components/layout';
 import Link from 'next/link';
 import { getCard } from '../../lib/scry.js';
 
