@@ -3,7 +3,7 @@ import { getCard } from '../../lib/scry.js';
 
 function Card({objCard}) {
   return (
-    <Layout>
+    <>
       <h1>{objCard.name} - {objCard.cost}</h1>
       <h2>{objCard.type}</h2>
       <p>⚔️ {objCard.pow} / 🛡️ {objCard.def}</p>
@@ -11,7 +11,7 @@ function Card({objCard}) {
       <br/><Link href='/'>
         <a>Go back!</a>
       </Link>
-    </Layout>
+    </>
   );
 }
 
