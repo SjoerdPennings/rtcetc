@@ -29,7 +29,7 @@ export async function getServerSideProps({params}) {
 
     return {
         props: {
-        objCard: objCard
+            	objCard: objCard
         }
     };
 }
