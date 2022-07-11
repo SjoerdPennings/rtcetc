@@ -5,23 +5,23 @@ function Card({objCard}) {
     if (objCard.error == false) {
         return (
             <>
-            <h1>{objCard.name} - {objCard.cost}</h1>
-            <h2>{objCard.type}</h2>
-            <p>⚔️ {objCard.pow} / 🛡️ {objCard.def}</p>
-            <p className='rules'>{objCard.rules}</p><br/>
-            <Link href='/'>
-                <a>Go back!</a>
-            </Link>
+                <h1>{objCard.name} - {objCard.cost}</h1>
+                <h2>{objCard.type}</h2>
+                <p>⚔️ {objCard.pow} / 🛡️ {objCard.def}</p>
+                <p className='rules'>{objCard.rules}</p><br/>
+                <Link href='/'>
+                    <a>Go back!</a>
+                </Link>
             </>
         );
     } else {
         return (
             <>
-            <h1>Error!</h1>
-            <p className='rules'>There&apos;s no such card!</p><br/>
-            <Link href='/'>
-                <a>Go back!</a>
-            </Link>
+                <h1>Error!</h1>
+                <p className='rules'>There&apos;s no such card!</p><br/>
+                <Link href='/'>
+                    <a>Go back!</a>
+                </Link>
             </>
         );
     }
@@ -29,6 +29,7 @@ function Card({objCard}) {
 
 export async function getServerSideProps({params}) {
     const data = await getCard(params.card)
+    console.log(data.object);
     if (data.object != 'error') {
         const objCard = {
             name: data.data[0].name,
@@ -47,7 +48,7 @@ export async function getServerSideProps({params}) {
 
     return {
         props: {
-            	objCard: objCard
+            objCard: objCard
         }
     };
 }
