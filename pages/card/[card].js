@@ -7,7 +7,7 @@ function Card({objCard}) {
         <h1>{objCard.name} - {objCard.cost}</h1>
         <h2>{objCard.type}</h2>
         <p>⚔️ {objCard.pow} / 🛡️ {objCard.def}</p>
-        <pre className='rules'>{objCard.rules}</pre><br/>
+        <p className='rules'>{objCard.rules}</p><br/>
         <Link href='/'>
             <a>Go back!</a>
         </Link>
