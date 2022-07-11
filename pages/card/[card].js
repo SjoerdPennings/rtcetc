@@ -1,8 +1,15 @@
 import Link from 'next/link';
 import { getCard } from '../../lib/scry.js';
+import {useRouter} from 'next/router'
 
 function Card({objCard}) {
-    if (objCard.error == false) {
+    var router = useRouter()
+
+    if (objCard.error == true) {
+        //If no card found, go to error page
+        router.push('/error');
+    } else {
+        //Else, return it
         return (
             <>
                 <h1>{objCard.name} - {objCard.cost}</h1>
@@ -14,24 +21,16 @@ function Card({objCard}) {
                 </Link>
             </>
         );
-    } else {
-        return (
-            <>
-                <h1>Error!</h1>
-                <p className='rules'>There&apos;s no such card!</p><br/>
-                <Link href='/'>
-                    <a>Go back!</a>
-                </Link>
-            </>
-        );
     }
+
 }
 
 export async function getServerSideProps({params}) {
     const data = await getCard(params.card)
-    console.log(data.object);
+    let objCard;
+
     if (data.object != 'error') {
-        const objCard = {
+        objCard = {
             name: data.data[0].name,
             cost: data.data[0].mana_cost,
             type: data.data[0].type_line,
@@ -41,8 +40,9 @@ export async function getServerSideProps({params}) {
             error: false,
         }
     } else {
-        const objCard = {
-            error: true
+        //If no card found, return error variable.
+        objCard = {
+            error: true,
         }
     }
 
