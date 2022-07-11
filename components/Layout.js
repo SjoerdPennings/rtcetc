@@ -10,7 +10,7 @@ export default function Layout({children}) {
                 {children}
             </div>
             <footer>
-                <p className='footerText'>Data provided by Scryfall, made with Next.js, hosted on Vercel.</p>
+                <p className='footerText'>Data provided by Scryfall and YGOProDeck, made with Next.js, hosted on Vercel.</p>
             </footer>
         </>
     );
